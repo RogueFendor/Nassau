@@ -82,6 +82,8 @@ _firstRun () {
 }
 _createCoin () {
 
+javac Parser.java
+
 coin=""
 digits=""
 acr=""
