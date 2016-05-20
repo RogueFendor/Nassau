@@ -193,7 +193,7 @@ echo "[*] Preparing Merkle Root"
 echo "[*] Error Expected continue"
 echo "[*] Executing tail -1 ~/.$VAR$C1/debug.log"
 
-TMP=`tail -1 ~/.$VAR$C1/debug.log`
+TMP=`tail -1 ~/.$VAR$C2/debug.log`
 cd ..
 cd ..
 
@@ -210,8 +210,8 @@ echo "[*] HASHING GENESIS BLOCK may take a while:"
 
 echo "[*] Finalising "
 echo "[*] $VAR$C1/debug.log "
-TMP2=`cat ~/.$VAR$C1/debug.log | grep block.nNonce`
-TMP3=`cat ~/.$VAR$C1/debug.log | grep block.GetHash`
+TMP2=`cat ~/.$VAR$C2/debug.log | grep block.nNonce`
+TMP3=`cat ~/.$VAR$C2/debug.log | grep block.GetHash`
 echo "[*] $TMP2"
 echo "[*] $TMP3"
 cd ..
