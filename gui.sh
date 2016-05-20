@@ -43,7 +43,29 @@ apt-get install openssl
 _main
 
 }
+_uploadToGit () {
 
+
+repo=""
+# open fd
+exec 3>&1
+
+# Store data to $VALUES variable
+REPO=$(dialog --ok-label "Submit" \
+    --backtitle "Nassau Menu" \
+    --title "Nassau v.0.1" \
+    --form "Nassau Set Up" \
+30 100 0 \
+  "Enter New Coin Name:"    1 1 "$repo"   2 1 10 0 \
+2>&1 1>&3)
+
+# close fd
+exec 3>&-
+
+clear
+
+
+}
 _errorMessage () {
 
 
@@ -167,7 +189,7 @@ echo "[*] "
 echo "[*] "
 echo "[*] Done"
 echo "[*] Preparing Merkle Root"
-./$VAR$C3
+./$VAR$C2
 echo "[*] Error Expected continue"
 echo "[*] Executing tail -1 ~/.$VAR$C1/debug.log"
 
@@ -184,7 +206,7 @@ echo "[*] recompiling $COIN source"
 make -f makefile.unix USE_UNP=-
 echo "[*] executing ./$VAR$C3"
 echo "[*] HASHING GENESIS BLOCK may take a while:"
-./$VAR$C3
+./$VAR$C2
 
 echo "[*] Finalising "
 echo "[*] $VAR$C1/debug.log "
@@ -208,15 +230,16 @@ echo "[*] recompiling clean Source "
 cd src
 make -f makefile.unix USE_UNP=-
 echo "[*] executing ./$VAR$C3"
-./$VAR$C3
+./$VAR$C2
 }
 _main () {
    dialog --title "Nassau Set Up" \
            --menu "Please choose an option:" 15 55 5 \
                    1 "Install Dependancies" \
                    2 "Create Coin" \
-                   3 "First Run" \
-                   4 "Exit from this menu" 2> $tempfile3
+                   3 "Run" \
+                   4 "Upload Clean sources to github" \
+                   5 "Exit from this menu" 2> $tempfile3
 
    retv=$?
    choice=$(cat $tempfile3)
@@ -228,9 +251,11 @@ _main () {
            ;;
        2) _createCoin
            ;;
-       3) _firstRun
+       3) _run
            ;;
-       4) clear
+       4) _uploadToGit
+           ;;
+       5) clear
           exit ;;
    esac
 }
