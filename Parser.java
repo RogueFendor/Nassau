@@ -8,8 +8,8 @@ public class Parser{
 
          case 1: sourceSetUp(args[1]);break;
          case 2: checkValidDigits(args[1]);break;
-         case 3: addMerkleRoot(args[3]);break;
-         case 4: addMerkleRoot(args[5]);break;
+         case 3: addMerkleRoot(args[1]);break;
+         case 4: addGenesiBlock(args[3]);break;
          case 5: capitalToSmall(args[1]);break;
          case 6: returnBase58(args[1]);break;
        }

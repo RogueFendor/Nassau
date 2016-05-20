@@ -45,7 +45,23 @@ _main
 }
 _uploadToGit () {
 
+username=""
+# open fd
+exec 3>&1
 
+# Store data to $VALUES variable
+USERNAME=$(dialog --ok-label "Submit" \
+    --backtitle "Nassau Menu" \
+    --title "Nassau v.0.1" \
+    --form "Nassau Set Up" \
+30 100 0 \
+  "Enter Github username Name:"    1 1 "$username"   2 1 25 0 \
+2>&1 1>&3)
+
+# close fd
+exec 3>&-
+
+clear
 repo=""
 # open fd
 exec 3>&1
@@ -56,13 +72,46 @@ REPO=$(dialog --ok-label "Submit" \
     --title "Nassau v.0.1" \
     --form "Nassau Set Up" \
 30 100 0 \
-  "Enter New Coin Name:"    1 1 "$repo"   2 1 10 0 \
+  "Enter Github Repository Name:"    1 1 "$repo"   2 1 25 0 \
 2>&1 1>&3)
 
 # close fd
 exec 3>&-
 
 clear
+
+folder=""
+# open fd
+exec 3>&1
+
+# Store data to $VALUES variable
+FOLDER=$(dialog --ok-label "Submit" \
+    --backtitle "Nassau Menu" \
+    --title "Nassau v.0.1" \
+    --form "Nassau Set Up" \
+30 100 0 \
+  "Enter Folder Name:"    1 1 "$folder"   2 1 25 0 \
+2>&1 1>&3)
+
+# close fd
+exec 3>&-
+
+clear
+cd git/$FOLDER
+rm README.md
+echo "# $FOLDER " >> README.md
+echo "#Automatically generated README.md#" >> README.md
+echo "##Author: Benjamim Keil##" >> README.md
+echo "##Email : roguefendor@gmail.com##" >> README.md
+echo "##Github: https://github.com/RogueFendor" >> README.md
+echo "###$FOLDER###" >> README.md
+echo "Add Description here:" >> README.md
+
+git init
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/$USERNAME/$FOLDER.git
+git push -u origin master
 
 
 }
@@ -93,7 +142,7 @@ COIN=$(dialog --ok-label "Submit" \
     --title "Nassau v.0.1" \
     --form "Nassau Set Up" \
 30 100 0 \
-  "Enter New Coin Name:"    1 1 "$coin"   2 1 10 0 \
+  "Enter New Coin Name:"    1 1 "$coin"   2 1 25 0 \
 2>&1 1>&3)
 
 # close fd
@@ -109,7 +158,7 @@ PUB_KEY_INDEX=$(dialog --ok-label "Submit" \
     --title "Nassau v.0.1" \
     --form "Nassau Set Up" \
 30 100 0 \
-  "Enter 4 Single Digits:"  1 1 "$digit"  2 1 10 0 \
+  "Enter 4 Single Digits:"  1 1 "$digit"  2 1 25 0 \
 2>&1 1>&3)
 
 # close fd
@@ -126,7 +175,7 @@ ACR=$(dialog --ok-label "Submit" \
     --title "Nassau v.0.1" \
     --form "Nassau Set Up" \
 30 100 0 \
-  "Enter Acronym for Coin:"  1 1 "$acr"  2 1 10 0 \
+  "Enter Acronym for Coin:"  1 1 "$acr"  2 1 25 0 \
 2>&1 1>&3)
 
 # close fd
@@ -173,6 +222,7 @@ find ./ -type f -readable -writable -exec sed -i "s/LearnCoind/$VAR$C3/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/learnCoind/$VAR$C3/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##EP##/$EP/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##XX##/$PUB_KEY/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/##EP##/$EP/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##C##/$COIN/g" {} \;
 echo "[*] creating new qt file"
 mv bitcoin-qt.pro $COIN-qt.pro
@@ -226,12 +276,19 @@ find ./ -type f -readable -writable -exec sed -i "s/##RG##/$GET_HASH/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##GB##/$GET_HASH/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##MR##/$MERKLE_ROOT/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/block.nNonce   = 0;/block.nNonce   = $NONCE;/g" {} \;
+cd ..
+echo "[*] moving sources to git folder"
+
+cp -r $COIN ../git
+
+cd $COIN
 echo "[*] recompiling clean Source "
 cd src
 make -f makefile.unix USE_UNP=-
 echo "[*] executing ./$VAR$C3"
 ./$VAR$C2
 }
+
 _main () {
    dialog --title "Nassau Set Up" \
            --menu "Please choose an option:" 15 55 5 \
