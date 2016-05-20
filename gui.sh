@@ -136,7 +136,7 @@ echo "[*]   this may take a while!"
 
 C1="coin"
 C2="Coin"
-C3="coind"
+C3="Coind"
 
 
 find ./ -type f -readable -writable -exec sed -i "s/Learncoin/$VAR$C1/g" {} \;
