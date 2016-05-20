@@ -20,7 +20,7 @@ tempfile3=/tmp/dialog_3_$$
 trap "rm -f $tempfile1 $tempfile2 $tempfile3" 0 1 2 5 15
 
 _install () {
-   
+
    # Install dependancies
 
 apt-get install build-essential libtool autotools-dev autoconf pkg-configlibssl-dev
@@ -44,16 +44,6 @@ _main
 
 }
 
-_FirstRunMessage () {
-  clear
-
-  dialog --begin 10 30 --backtitle "System Information" \
---title "ATTENTION" \
---msgbox 'Sources have been prepared for first Run. You Need to select First Run from Menu to finalize Coin Setup' 10 30
-
-_createCoin
-
-}
 _errorMessage () {
 
 
@@ -64,22 +54,7 @@ _errorMessage () {
 _createCoin
 
 }
-_firstRun () {
-   cd $COIN/src
-   echo "[*] Preparing Merkle Root"
-   echo "$VAR$C3"
-   ./$VAR$C3
-   echo "[*] Error Expected continue"
-   
-   TMP=`tail -1 ~/.Flintcoin/debug.log`
-   cd ..
-   cd ..
-
-   MERKLE_ROOT=`java Parser 3 $TMP`
-   cd $COIN 
-   find ./ -type f -readable -writable -exec sed -i "s/##MR##/$MERKLE_ROOT/g" {} \;
-
-}
+_run () {}
 _createCoin () {
 
 javac Parser.java
@@ -144,6 +119,7 @@ EP=`date +%s`
 #echo "$ACR"
 VAR=`java Parser 1 $COIN`
 DIGITS=`java Parser 2 $PUB_KEY_INDEX`
+PUB_KEY=`java Parser 6 $COIN`
 
 if [ $DIGITS -eq 0 ]
 then
@@ -162,7 +138,6 @@ C1="coin"
 C2="Coin"
 C3="coind"
 
-PUB_KEY=`java Parser 6 $COIN`
 
 find ./ -type f -readable -writable -exec sed -i "s/Learncoin/$VAR$C1/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/LearnCoin/$VAR$C2/g" {} \;
@@ -201,7 +176,7 @@ cd ..
 cd ..
 
 MERKLE_ROOT=`java Parser 3 $TMP`
-cd $COIN 
+cd $COIN
 echo "[*] Setting MERKLE_ROOT"
 find ./ -type f -readable -writable -exec sed -i "s/##MR##/$MERKLE_ROOT/g" {} \;
 cd src
