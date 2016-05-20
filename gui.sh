@@ -118,14 +118,36 @@ git push -u origin master
 _errorMessage () {
 
 
-  dialog --begin 10 30 --backtitle "System Information" \
+  dialog --begin 10 30  --backtitle "System Information" \
 --title "Error" \
 --msgbox 'Wrong format for Digits Enter 4 Digits. Digits will replace a Public Key index you need to enter 4 single digits' 10 30
 
 _createCoin
 
 }
-_run () {}
+
+_message () {
+clear
+        echo ""
+        echo ""
+        echo "[*] Coin is created in order to run it,"
+        echo "[*] It's recommended to change the configuration file"
+        echo "[*] You'll need!"
+        echo "[*] rpcuser=someusername" 
+        echo "[*] password=somepassword" 
+        echo "[*] If you are running this as first seed node server you need to change following:" 
+        echo "[*] node=<the ip address of the other computer this will act as a seed node>" 
+        echo "[*] "
+        echo "[*] Otherwise Remote Ip is distributed and and coin is ready to run"  
+        echo "[*] Goodbye..."
+}
+
+_run () {
+
+
+
+
+}
 _createCoin () {
 
 javac Parser.java
@@ -285,8 +307,9 @@ cd $COIN
 echo "[*] recompiling clean Source "
 cd src
 make -f makefile.unix USE_UNP=-
-echo "[*] executing ./$VAR$C3"
-./$VAR$C2
+
+_message
+
 }
 
 _main () {
