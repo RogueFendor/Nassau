@@ -127,6 +127,7 @@ _createCoin
 }
 
 _message () {
+
 clear
         echo ""
         echo ""
@@ -144,10 +145,11 @@ clear
 
 _run () {
 
-
-
-
+FILE=$(dialog --stdout --title "Please choose a file" --fselect ./ 10 40)
+echo "${FILE} file chosen."
+./$FILE
 }
+
 _createCoin () {
 
 javac Parser.java
