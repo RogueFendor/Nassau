@@ -5,17 +5,17 @@
 
 ##Summary##
 
-Nassay coin creator provides users who wish to create one or multiple
+Nassau coin creator provides users who wish to create one or multiple
 Cryptographic currencies an easy way of coin creation by automating the
 Coin creation process.
-Multiple coins can be created and uploaded straight
+Multiple Coins can be created and uploaded straight
 to github. Here is a Coin created and uploaded by Nassau
 
 ![Git1](/documentation/Git1.png)
 
 This project is in its infantry and should not be considered
-as rock soldid solution for digital currency exchange rather it is viewed as an
-educational attempt and oportunity to bring the blockchain technology to a wider audience.
+as rock solid solution for digital currency exchange, rather it is viewed as an
+educational attempt and opportunity to bring the blockchain technology to a wider audience.
 
 Here are some Screen shots about how and what we can do with the created Coins
 
@@ -23,7 +23,7 @@ You can execute the Coin directly from the Commandline:
 
 ![Term2](/documentation/Term2.png)
 
-I compiled the Nassau Created clean source of PirateCoin after i cloned
+I compiled the Nassau Created clean sources of PirateCoin after i cloned
 the repo on my Raspberry PI 2
 
 ![RPI2](/documentation/RPI.jpg)
