@@ -112,7 +112,7 @@ This will prompt a gui similar to the one shown below.
 * b) You will be asked to enter a prefix for a public key just enter four random single digits 
 * c) You will be asked to enter a new abbreviation for your Coin example BTC for bitcoin
 
-After the initial coin set up we beginn the main compilation and heash generation process.
+After the initial coin set up we beginn the main compilation and hash generation process.
 This is essentially a very long process that compiles and recompiles your sources
 The process takes a while so go and have a Coffee..
 When the sources have finished compilation and genesis block s hashed the programm terminates 
