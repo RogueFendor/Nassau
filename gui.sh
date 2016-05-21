@@ -147,7 +147,7 @@ _run () {
 
 FILE=$(dialog --stdout --title "Please choose a file" --fselect ./ 10 40)
 echo "${FILE} file chosen."
-./$FILE
+./$FILE &
 }
 
 _createCoin () {
