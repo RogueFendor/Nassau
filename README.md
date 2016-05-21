@@ -81,7 +81,7 @@ Brian Sang, Solon High School
 
 this will initialize the installation for the dependancies:
 
-**Folowing packages are being installed!
+**Folowing packages are being installed!**
 
 * sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config
 libssl-dev
@@ -108,9 +108,9 @@ This will prompt a gui similar to the one shown below.
 
 1. Select "Create Coin"
 
-a) You will be prompted to enter a new Coin Name enter the name for your Coin
-b) You will be asked to enter a prefix for a public key just enter four random single digits 
-c) You will be asked to enter a new abbreviation for your Coin example BTC for bitcoin
+* a) You will be prompted to enter a new Coin Name enter the name for your Coin
+* b) You will be asked to enter a prefix for a public key just enter four random single digits 
+* c) You will be asked to enter a new abbreviation for your Coin example BTC for bitcoin
 
 After the initial coin set up we beginn the main compilation and heash generation process.
 This is essentially a very long process that compiles and recompiles your sources
