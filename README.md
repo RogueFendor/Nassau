@@ -7,11 +7,72 @@
 
 Nassay coin creator provides users who wish to create one or multiple
 Cryptographic currencies an easy way of coin creation by automating the
-Coin creation process. Multiple coins can be created and uploaded straight
-to github.
+Coin creation process.
+Multiple coins can be created and uploaded straight
+to github. Here a two Coins created and uploaded by Nassau
+
+![Git1](/documentation/Git1.png)
+
 This project is in its infantry and should not be considered
 as rock soldid solution for digital currency exchange rather it is viewed as an
 educational attempt and oportunity to bring the blockchain technology to a wider audience.
+
+Here are some Screen shots about how and what we can do with the created Coins
+
+You can execute the Coin directly from the Commandline:
+
+![Term2](/documentation/Term2.png)
+
+I compiled the Nassau Created clean source of PirateCoin after i cloned
+the repo on my Raspberry PI 2
+
+![RPI2](/documentation/RPI.jpg)
+
+As you can see here I executed PirateCoin and we have a connection
+
+![Term4](/documentation/Term4.png)
+
+And on my Local Machine
+
+![Term3](/documentation/Term3.png)
+
+In order to get information of the Coin wallet we execute 
+
+./PirateCoin getInfo
+
+On the Raspberry Pi we get:
+
+![Term1](/documentation/Term1.png)
+
+If you want to start CPU mining execute
+
+./PirateCoin setgenerate true 4
+
+![Term5](/documentation/Term5.png)
+
+And to see progress simply execute ./PirateCoin getmininginfo
+
+![Term6](/documentation/Term6.png)
+
+WARNING:
+
+This Implementation should not be used as working solution rather it is an
+educational an learning process about Blockchains and crypto currencies in general
+
+Special Thanks to:
+
+Brian Sang, Solon High School
+
+
+
+
+
+
+
+
+
+
+
 
 
 ##Install  Dependancies##
@@ -89,8 +150,8 @@ Should you et an error that rpcpassword needs to be set up:
 Add the following to ~/.yourCoin/yourCoin.conf
 
 rpcuser=testUser 
-password=demo2015  
-node=other nodes IP address
+rpcpassword=demo2015  
+addnode=other nodes IP address
 
 If You want to use this as first seed you need to setup a seed node to distribute the available connected wallets.
 Otherwise you just can add an IP adress of a allready working running instance.
