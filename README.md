@@ -42,7 +42,7 @@ In order to get information of the Coin wallet we execute
 
 On the Raspberry Pi we get:
 
-![Term1](/documentation/Term1.png)
+![Term4](/documentation/Term4.png)
 
 If you want to start CPU mining execute
 
