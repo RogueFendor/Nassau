@@ -9,7 +9,7 @@ Nassay coin creator provides users who wish to create one or multiple
 Cryptographic currencies an easy way of coin creation by automating the
 Coin creation process.
 Multiple coins can be created and uploaded straight
-to github. Here a two Coins created and uploaded by Nassau
+to github. Here is a Coin created and uploaded by Nassau
 
 ![Git1](/documentation/Git1.png)
 
