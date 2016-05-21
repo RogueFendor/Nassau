@@ -66,15 +66,6 @@ Brian Sang, Solon High School
 
 
 
-
-
-
-
-
-
-
-
-
 ##Install  Dependancies##
 
 1. run sudo ./gui.sh
