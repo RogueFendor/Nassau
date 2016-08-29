@@ -12,6 +12,8 @@ public class Parser{
          case 4: addGenesiBlock(args[3]);break;
          case 5: capitalToSmall(args[1]);break;
          case 6: returnBase58(args[1]);break;
+         case 7: returnPort(args[1]);break;
+         case 8: returnPortRange(args[1]);break;
        }
 
    }
@@ -127,5 +129,38 @@ public class Parser{
          }
          
    }
+   public static void returnPort(String port ){
+          if (port.length()==4){
+             int val=0;
+           try{
+                  val = Integer.parseInt(port);
 
+             }
+             catch(NumberFormatException e){
+                 val = 0;
+             }
+             System.out.println(val);
+         }
+         else{
+           System.out.println("36327");
+         }
+
+   }
+   public static void returnPortRange(String port ){
+          if (port.length()==4){
+             int val=0;
+           try{
+                  val = Integer.parseInt(port);
+
+             }
+             catch(NumberFormatException e){
+                 val = 0;
+             }
+             System.out.println(val+1);
+         }
+         else{
+           System.out.println("36327");
+         }
+
+   }
 }

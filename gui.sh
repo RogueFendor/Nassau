@@ -157,6 +157,7 @@ javac Parser.java
 coin=""
 digits=""
 acr=""
+port=""
 # open fd
 exec 3>&1
 
@@ -189,7 +190,22 @@ PUB_KEY_INDEX=$(dialog --ok-label "Submit" \
 exec 3>&-
 
 clear
+# open fd
+exec 3>&1
 
+# Store data to $VALUES variable
+PORT=$(dialog --ok-label "Submit" \
+    --backtitle "Nassau Menu" \
+    --title "Nassau v.0.1" \
+    --form "Nassau Set Up" \
+30 100 0 \
+  "Enter new Port ( must be at least 3000 or higher ):"  1 1 "$port"  2 1 25 0 \
+2>&1 1>&3)
+
+# close fd
+exec 3>&-
+
+clear
 # open fd
 exec 3>&1
 
@@ -215,6 +231,10 @@ EP=`date +%s`
 VAR=`java Parser 1 $COIN`
 DIGITS=`java Parser 2 $PUB_KEY_INDEX`
 PUB_KEY=`java Parser 6 $COIN`
+
+PORT_R1=`java Parser 7 $PORT`
+PORT_R2=`java Parser 8 $PORT_R1`
+PORT_R3=`java Parser 8 $PORT_R2`
 
 if [ $DIGITS -eq 0 ]
 then
@@ -248,6 +268,9 @@ find ./ -type f -readable -writable -exec sed -i "s/##EP##/$EP/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##XX##/$PUB_KEY/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##EP##/$EP/g" {} \;
 find ./ -type f -readable -writable -exec sed -i "s/##C##/$COIN/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/##P1##/$PORT_R1/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/##P2##/$PORT_R2/g" {} \;
+find ./ -type f -readable -writable -exec sed -i "s/##P3##/$PORT_R3/g" {} \;
 echo "[*] creating new qt file"
 mv bitcoin-qt.pro $COIN-qt.pro
 echo "[*] creating new Directory for clean $COIN source"
